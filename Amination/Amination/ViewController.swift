@@ -24,7 +24,7 @@ class ViewController: UIViewController {
     
     // Cube Animation
     @IBAction func startMove() {
-        
+        //Need to animations:
         let bacgroudColor = animatingView.backgroundColor
         let alpha = animatingView.alpha
         let center = animatingView.center
@@ -46,5 +46,23 @@ class ViewController: UIViewController {
             }
         }
     }
+    
+    // Transform Animation
+    @IBAction func startTransform() {
+        
+        //Create Label
+        let lable = UILabel(frame: CGRect(x: 30, y: 30, width: 100, height: 30))
+        lable.text = "Swift"
+        
+        UIView.transition(with: self.animatingView, duration: 2, options: .transitionCurlUp, animations: {
+            self.animatingView.addSubview(lable)
+        })  { (isFinished) in
+            UIView.transition(with: self.animatingView, duration: 2, options: .transitionCrossDissolve,
+                animations: {
+                lable.removeFromSuperview()
+            }, completion: nil)
+        }
+    }
+    
 }
 
