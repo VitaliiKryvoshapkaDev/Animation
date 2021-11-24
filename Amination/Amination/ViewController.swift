@@ -11,15 +11,58 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var animatingView: UIView!
     
+    // UIDynamic Animation
+    @IBOutlet weak var dropViewBatton: UIButton!
     
     
+    var animator: UIDynamicAnimator?
+    var gravity: UIGravityBehavior?
+    var collider: UICollisionBehavior?
+    var itemBehaviour: UIDynamicItemBehavior?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        animator = UIDynamicAnimator(referenceView: view)
+        gravity = UIGravityBehavior()
+        collider = UICollisionBehavior()
+        itemBehaviour = UIDynamicItemBehavior()
+        
+        //All elementc collide with out view
+        collider?.translatesReferenceBoundsIntoBoundary = true
+        collider?.collisionMode = .everything
+        
+        //Shake button
+        dropViewBatton.shake()
+        //Crash with button
+        collider?.addItem(dropViewBatton)
+        
+        
+        
+        //Elastic
+        itemBehaviour?.elasticity = 1
+        itemBehaviour?.friction = 1
+        itemBehaviour?.allowsRotation = true
+        
+        animator?.addBehavior(gravity!)
+        animator?.addBehavior(collider!)
+        animator?.addBehavior(itemBehaviour!)
+        
         
         // Do any additional setup after loading the view.
     }
+    
+    @IBAction func didTapDropView() {
+        let view = UIView(frame: CGRect(x: dropViewBatton.frame.origin.x, y: 40, width: 30, height: 30))
+        view.backgroundColor = #colorLiteral(red: 0.937, green: 0.714, blue: 0.502, alpha: 1.000)
+        self.view.addSubview(view)
+        
+        gravity?.addItem(view)
+        collider?.addItem(view)
+        itemBehaviour?.addItem(view)
+    }
+    
+    
     
     
     // Cube Animation
@@ -64,5 +107,22 @@ class ViewController: UIViewController {
         }
     }
     
+    
+
+    
 }
 
+    //add Shake button
+public extension UIView {
+
+    func shake(count : Float = 4,for duration : TimeInterval = 0.5,withTranslation translation : Float = 5) {
+
+        let animation = CAKeyframeAnimation(keyPath: "transform.translation.x")
+        animation.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.linear)
+        animation.repeatCount = count
+        animation.duration = duration/TimeInterval(animation.repeatCount)
+        animation.autoreverses = true
+        animation.values = [translation, -translation]
+        layer.add(animation, forKey: "shake")
+    }
+}

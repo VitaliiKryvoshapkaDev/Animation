@@ -16,8 +16,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="tgl-GE-3LT">
-                                <rect key="frame" x="10" y="54" width="197.33333333333334" height="31"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="31" translatesAutoresizingMaskIntoConstraints="NO" id="tgl-GE-3LT">
+                                <rect key="frame" x="10" y="54" width="220.33333333333334" height="31"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Eay-JX-MIM">
                                         <rect key="frame" x="0.0" y="0.0" width="94.666666666666671" height="31"/>
@@ -30,7 +30,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="006-hI-pzu">
-                                        <rect key="frame" x="102.66666666666666" y="0.0" width="94.666666666666657" height="31"/>
+                                        <rect key="frame" x="125.66666666666666" y="0.0" width="94.666666666666657" height="31"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="Transform">
                                             <color key="baseForegroundColor" systemColor="systemTealColor"/>
@@ -46,16 +46,27 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemPinkColor"/>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dOD-z8-yWu">
+                                <rect key="frame" x="167" y="432.66666666666669" width="80.333333333333314" height="31"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Dynamic"/>
+                                <connections>
+                                    <action selector="didTapDropView" destination="BYZ-38-t0r" eventType="touchUpInside" id="wj1-62-OKx"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="tgl-GE-3LT" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="10" id="EEI-ek-TI0"/>
+                            <constraint firstItem="dOD-z8-yWu" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="LeC-jp-jE7"/>
                             <constraint firstItem="tgl-GE-3LT" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="10" id="Q51-zJ-nMP"/>
+                            <constraint firstItem="dOD-z8-yWu" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Rrl-Cq-mfx"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="animatingView" destination="ltS-hQ-SCG" id="TwT-h8-poh"/>
+                        <outlet property="dropViewBatton" destination="dOD-z8-yWu" id="yRQ-hV-gmV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
